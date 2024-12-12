@@ -9,6 +9,7 @@ variable "google_credentials" {
 variable "project_id" {
   description = "Google Cloud project ID"
   type        = string
+  default     = "ee-india-se-data"
 }
 
 variable "region" {
@@ -20,6 +21,7 @@ variable "region" {
 variable "bucket_name" {
   description = "Name of the GCS bucket"
   type        = string
+  default     = "se-data-landing-monica"
 }
 
 variable "bucket_location" {
@@ -42,6 +44,6 @@ variable "public_access_prevention" {
 
 variable "uniform_bucket_level_access" {
   description = "Enable uniform bucket-level access (true/false)"
-  type        = string
+  type        = bool
   default     = true
 }
