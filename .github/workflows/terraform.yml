@@ -39,8 +39,8 @@ jobs:
         run: terraform -chdir=terraform fmt -check
 
       # Step 6: Terraform Plan
-      - name: Terraform Plan
-        run: terraform -chdir=terraform plan
+      -  name: Terraform Plan
+      -  run: terraform -chdir=terraform plan -var-file=terraform.tfvars
 
       # Step 7: Terraform Apply (Only on Pushes)
       - name: Terraform Apply
