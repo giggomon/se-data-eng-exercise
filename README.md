@@ -9,7 +9,7 @@ The project utilises the following technologies:
 - Snowflake
 
 ### Skills Covered
-This poroject focuses on the following skills:
+This project focuses on the following skills:
 1. Create a Landing Bucket on GCP: Set up a GCS bucket to store raw data.
 2. Setup Airflow: Configure Airflow for data pipeline orchestration.
 3. Create Taxi Trips Table in Raw Layer: Define a table structure for raw taxi trip data.
