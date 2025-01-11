@@ -11,3 +11,4 @@ terraform.tfvars
 *.tfvars
 *.tfvars.json
 /Users/mwu/Documents/ee-data-eng-bootcamp-2004/gcp_secrets/ee-india-se-data-beaa0dcf6aec.json
+/Users/mwu/Documents/ee-data-eng-bootcamp-2004/sample_files/sample_file_1_monica.txt
