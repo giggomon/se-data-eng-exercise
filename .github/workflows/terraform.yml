@@ -49,8 +49,8 @@ jobs:
       # Terraform Apply (Only on Pushes)
       - name: Terraform Apply
         if: github.event_name == 'push'
-        run: terraform -chdir=terraform apply -auto-approve
+        run: terraform -chdir=terraform apply -auto-approve -var="sample_file_name=sample_file.txt" -var="sample_file_path=/Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt"
 
-      # Upload a file to GCS
-      - name: Upload a file to GCS
-        run: gsutil cp /Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt gs://se-data-landing-monica
+#      # Upload a file to GCS
+#      - name: Upload a file to GCS
+#        run: gsutil cp /Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt gs://se-data-landing-monica
