@@ -39,5 +39,5 @@ resource "google_storage_bucket_object" "upload_file" {
   source       = "../resources/sample_file.txt"
   content_type = "text/plain"
 
-  depends_on = [google_storage_bucket.landing_bucket]
+  depends_on = [google_storage_bucket.landing_bucket.name]
 }
