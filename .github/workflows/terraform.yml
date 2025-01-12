@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'feature/*' # Matches any branch starting with "feature/"
+      - 'main'
   pull_request:
     branches:
       - 'main' # This ensures the workflow runs for pull requests to the main branch
