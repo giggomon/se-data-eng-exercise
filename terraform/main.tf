@@ -15,10 +15,6 @@ provider "google" {
   region      = var.region
 }
 
-data "google_storage_bucket" "existing_bucket" {
-  name = var.bucket_name
-}
-
 # Resource: Google Cloud Storage bucket
 resource "google_storage_bucket" "landing_bucket" {
   name          = var.bucket_name
