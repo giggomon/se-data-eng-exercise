@@ -24,39 +24,33 @@ jobs:
         with:
             credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-      # Set environment variables
-      - name: Set environment variables
-        run: |
-          echo "SAMPLE_FILE_PATH=/Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt" >> $GITHUB_ENV
-          echo "SAMPLE_FILE_NAME=sample_file.txt" >> GITHUB_ENV
-
-      # Step 3: Set up Terraform
+      # Set up Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.6
 
-      # Step 4: Terraform Init
+      # Terraform Init
       - name: Terraform Init
         run: terraform -chdir=terraform init
 
-      # Step 5: Terraform Validate
+      # Terraform Validate
       - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
-      # Step 6: Terraform Format (Optional)
+      # Terraform Format (Optional)
       - name: Terraform Format
         run: terraform -chdir=terraform fmt -check
 
-      - name: Check environment variables
-        run: echo "SAMPLE_FILE_NAME=${{ secrets.SAMPLE_FILE_NAME }}"
-
-      # Step 7: Terraform Plan
+      # Terraform Plan
       -  name: Terraform Plan
          run: terraform -chdir=terraform plan
 
-      # Step 8: Terraform Apply (Only on Pushes)
+      # Terraform Apply (Only on Pushes)
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: terraform -chdir=terraform apply -auto-approve
 
+      # Upload a file to GCS
+      - name: Upload a file to GCS
+        run: gsutil cp /Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt gs://se-data-landing-monica
