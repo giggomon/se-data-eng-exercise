@@ -52,8 +52,3 @@ variable "sample_file_name" {
   description = "Name of the file in the bucket to upload to GCS"
   type        = string
 }
-
-variable "sample_file_path" {
-  description = "Path to the sample file"
-  type        = string
-}
