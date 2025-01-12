@@ -57,11 +57,10 @@ jobs:
 
       # Terraform Apply (Only on Pushes)
       - name: Terraform Apply
-        if: github.event_name == 'push'
         run: |
           if ! gcloud storage buckets describe gs://${{ secrets.GCS_BUCKET_NAME }} --format="value(name)" ; then
             echo "Bucket does not exist. Creating it now..."
-            terraform apply -auto-approve
+            terraform -chdir=terraform apply -auto-approve
           else
             echo "Bucket exists. No need to create it."
           fi

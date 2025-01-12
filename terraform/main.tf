@@ -26,6 +26,7 @@ resource "google_storage_bucket" "landing_bucket" {
 
   lifecycle {
     prevent_destroy = true
+    ignore_changes  = [location]
   }
 }
 
