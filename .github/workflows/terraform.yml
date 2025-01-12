@@ -50,3 +50,6 @@ jobs:
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: terraform -chdir=terraform apply -auto-approve
+
+      - name: Check environment variables
+        run: echo "SAMPLE_FILE_NAME=${{secrets.SAMPLE_FILE_NAME}}"
