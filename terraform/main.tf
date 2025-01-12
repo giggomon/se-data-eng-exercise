@@ -15,6 +15,10 @@ provider "google" {
   region      = var.region
 }
 
+data "google_storage_bucket" "existing_bucket" {
+  name = var.bucket_name
+}
+
 # Resource: Google Cloud Storage bucket
 resource "google_storage_bucket" "landing_bucket" {
   name          = var.bucket_name
@@ -23,6 +27,10 @@ resource "google_storage_bucket" "landing_bucket" {
 
   uniform_bucket_level_access = var.uniform_bucket_level_access # Bucket policy: Make it private by default
   public_access_prevention    = var.public_access_prevention    # No public access
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "google_storage_bucket_object" "upload_file" {
@@ -30,4 +38,6 @@ resource "google_storage_bucket_object" "upload_file" {
   name         = var.sample_file_name
   source       = "../resources/sample_file.txt"
   content_type = "text/plain"
+
+  depends_on = [google_storage_bucket.landing_bucket]
 }

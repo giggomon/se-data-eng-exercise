@@ -55,6 +55,11 @@ jobs:
       -  name: Terraform Plan
          run: terraform -chdir=terraform plan
 
+      -  name: Check if GCS bucket exists
+         run: |
+           BUCKET_NAME=""
+
       # Terraform Apply (Only on Pushes)
       - name: Terraform Apply
+        if: github.event_name == 'push'
         run: terraform -chdir=terraform apply -auto-approve
