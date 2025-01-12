@@ -30,6 +30,10 @@ jobs:
         with:
           terraform_version: 1.5.6
 
+      # Export environment variable for sample_file
+      - name: Set sample_file variable
+        run: echo "Sample_file=$ {{ secrets.SAMPLE_FILE }}" >> GITHUB_ENV
+
       # Terraform Init
       - name: Terraform Init
         run: terraform -chdir=terraform init
@@ -49,7 +53,7 @@ jobs:
       # Terraform Apply (Only on Pushes)
       - name: Terraform Apply
         if: github.event_name == 'push'
-        run: terraform -chdir=terraform apply -auto-approve -var="sample_file_name=sample_file.txt" -var="sample_file_path=/Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt"
+        run: terraform -chdir=terraform apply -auto-approve
 
 #      # Upload a file to GCS
 #      - name: Upload a file to GCS
