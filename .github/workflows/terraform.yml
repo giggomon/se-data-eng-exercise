@@ -43,7 +43,7 @@ jobs:
         run: terraform -chdir=terraform fmt -check
 
       - name: Check environment variables
-        run: echo "SAMPLE_FILE_NAME=${{secrets.SAMPLE_FILE_NAME}}"
+        run: echo "SAMPLE_FILE_NAME=${{sample_file_name}}"
 
       # Step 7: Terraform Plan
       -  name: Terraform Plan
