@@ -27,7 +27,7 @@ resource "google_storage_bucket" "landing_bucket" {
 
 resource "google_storage_bucket_object" "upload_file" {
   bucket       = google_storage_bucket.landing_bucket.name
-  name         = "sample_file.txt"
-  source       = "/Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt"
+  name         = var.sample_file_name
+  source       = var.sample_file_path
   content_type = "text/plain"
 }

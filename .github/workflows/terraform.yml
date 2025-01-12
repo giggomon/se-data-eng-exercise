@@ -14,15 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the repository
+      # Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Authenticate with GCP
+      # Authenticate with GCP
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v2
         with:
             credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      # Set environment variables
+      - name: Set environment variables
+        run: |
+          echo "SAMPLE_FILE_PATH=/Users/mwu/Documents/ee-data-eng-bootcamp-2024/sample_files/sample_file.txt" >> $GITHUB_ENV
+          echo "SAMPLE_FILE_NAME=sample_file.txt" >> GITHUB_ENV
 
       # Step 3: Set up Terraform
       - name: Setup Terraform

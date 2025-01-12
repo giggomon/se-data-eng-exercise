@@ -56,5 +56,4 @@ variable "sample_file_name" {
 variable "sample_file_path" {
   description = "Path to the sample file"
   type        = string
-  default     = ""
 }
