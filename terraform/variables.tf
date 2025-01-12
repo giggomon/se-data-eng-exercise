@@ -53,8 +53,7 @@ variable "sample_file_name" {
   type        = string
 }
 
-#
-# variable "sample_file_path" {
-#   description = "Path to the sample file"
-#   type        = string
-# }
+variable "sample_file_path" {
+  description = "Path to the sample file"
+  type        = string
+}
