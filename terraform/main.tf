@@ -25,9 +25,9 @@ resource "google_storage_bucket" "landing_bucket" {
   public_access_prevention    = var.public_access_prevention    # No public access
 }
 
-# resource "google_storage_bucket_object" "upload_file" {
-#   bucket       = google_storage_bucket.landing_bucket.name
-#   name         = var.sample_file_name
-#   source       = var.sample_file_path
-#   content_type = "text/plain"
-# }
+resource "google_storage_bucket_object" "upload_file" {
+  bucket       = google_storage_bucket.landing_bucket.name
+  name         = var.sample_file_name
+  source       = "../resources/sample_file.txt"
+  content_type = "text/plain"
+}
