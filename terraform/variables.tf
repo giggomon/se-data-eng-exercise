@@ -48,13 +48,12 @@ variable "uniform_bucket_level_access" {
   default     = true
 }
 
-variable "sample_file_1_name" {
+variable "sample_file_name" {
   description = "Name of the file in the bucket"
   type        = string
-  default     = "sample_file_1_monica.txt"
 }
 
-variable "sample_file_1_path" {
+variable "sample_file_path" {
   description = "Path to the sample file"
   type        = string
   default     = ""
