@@ -32,7 +32,7 @@ jobs:
 
       # Set environment variable for sample_file_name
       - name: Set sample_file_name variable
-        run: echo "TF_VAR_sample_file_name=${{ secrets.SAMPLE_FILE_NAME }}" >> $GITHUB_ENV
+        run: echo "TF_VAR_sample_file_name=${{ variables.SAMPLE_FILE_NAME }}" >> $GITHUB_ENV
 
       # Debug Variables
       - name: Debug variables
