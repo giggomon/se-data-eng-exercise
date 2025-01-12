@@ -58,7 +58,3 @@ jobs:
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: terraform -chdir=terraform apply -auto-approve
-
-      # Upload a file to GCS
-      - name: Upload a file to GCS
-        run: gsutil cp ../resources/sample_file.txt gs://se-data-landing-monica
