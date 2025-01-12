@@ -28,6 +28,6 @@ resource "google_storage_bucket" "landing_bucket" {
 resource "google_storage_bucket_object" "upload_file" {
   bucket       = google_storage_bucket.landing_bucket.name
   name         = var.sample_file_name
-  source       = var.sample_file_path
+  source       = "../resources/sample_file.txt"
   content_type = "text/plain"
 }

@@ -14,39 +14,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the repository
+      # Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Authenticate with GCP
+      # Authenticate with GCP
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v2
         with:
             credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-      # Step 3: Set up Terraform
+      # Set up Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.6
 
-      # Step 4: Terraform Init
+      # Set environment variable for sample_file_name
+      - name: Set sample_file_name variable
+        run: echo "TF_VAR_sample_file_name=${{ secrets.SAMPLE_FILE_NAME }}" >> $GITHUB_ENV
+
+      # Debug Variables
+      - name: Debug variables
+        run: echo "Sample file name:$TF_VAR_sample_file_name"
+
+      # Terraform Init
       - name: Terraform Init
         run: terraform -chdir=terraform init
 
-      # Step 5: Terraform Validate
+      # Terraform Validate
       - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
-      # Step 6: Terraform Format (Optional)
+      # Terraform Format (Optional)
       - name: Terraform Format
         run: terraform -chdir=terraform fmt -check
 
-      # Step 7: Terraform Plan
+      # Terraform Plan
       -  name: Terraform Plan
          run: terraform -chdir=terraform plan
 
-      # Step 8: Terraform Apply (Only on Pushes)
+      # Terraform Apply (Only on Pushes)
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: terraform -chdir=terraform apply -auto-approve
