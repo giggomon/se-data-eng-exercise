@@ -59,10 +59,9 @@ jobs:
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: |
-          BUCKET_NAME="se-data-landing-monica"
-          if gsutil ls -b gs://${BUCKET_NAME}; then
-            echo "Bucket already exists, skipping creation"
+          if ! gcloud storage buckets describe gs://${{ secrets.GCS_BUCKET_NAME }} --format="value(name)" ; then
+            echo "Bucket does not exist. Creating it now..."
+            gcloud storage buckets create gs://${{ secrets.GCS_BUCKET_NAME }} --location=US
           else
-            echo "Bucket does not exist, creating it"
-            terraform apply -auto-approve
+            echo "Bucket exists. No need to create it."
           fi
