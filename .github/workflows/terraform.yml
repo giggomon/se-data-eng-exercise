@@ -61,7 +61,7 @@ jobs:
         run: |
           if ! gcloud storage buckets describe gs://${{ secrets.GCS_BUCKET_NAME }} --format="value(name)" ; then
             echo "Bucket does not exist. Creating it now..."
-            gcloud storage buckets create gs://${{ secrets.GCS_BUCKET_NAME }} --location=US
+            terraform apply -auto-approve
           else
             echo "Bucket exists. No need to create it."
           fi
