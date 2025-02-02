@@ -52,3 +52,48 @@ variable "sample_file_name" {
   description = "Name of the file in the bucket to upload to GCS"
   type        = string
 }
+
+variable "snowflake_org" {
+  description = "Name of the snowflake organisation"
+  type        = string
+}
+
+variable "snowflake_account_name" {
+  description = "Snowflake account name"
+  type        = string
+}
+
+variable "snowflake_user" {
+  description = "Snowflake user"
+  type        = string
+}
+
+variable "snowflake_pwd" {
+  description = "Snowflake user password"
+  type        = string
+}
+
+variable "snowflake_role" {
+  description = "Snowflake Role"
+  type        = string
+}
+
+variable "snowflake_wh" {
+  description = "Snowflake warehouse"
+  type        = string
+}
+
+variable "snowflake_database" {
+  description = "Snowflake Database"
+  type        = string
+}
+
+variable "snowflake_schema" {
+  description = "Snowflake Schema"
+  type        = string
+}
+
+variable "taxi_trip_raw_table" {
+  description = "Taxi Trip Raw Table"
+  type        = string
+}
